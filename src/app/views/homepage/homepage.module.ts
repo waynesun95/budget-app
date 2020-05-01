@@ -1,7 +1,8 @@
+import { DataService } from './../../services/data.service';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { HomepageComponent } from "./homepage.component";
-import { DatePipe } from '@angular/common';
+import { DatePipe, CurrencyPipe } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -11,7 +12,9 @@ import { DatePipe } from '@angular/common';
         HomepageComponent
     ],
     providers: [
-        DatePipe
+        CurrencyPipe,
+        DatePipe,
+        DataService
     ],
     // exports: [
     //     HomepageComponent

@@ -1,5 +1,6 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from "@angular/core";
-import { DatePipe } from "@angular/common";
+import { DatePipe, CurrencyPipe } from "@angular/common";
 
 @Component({
     selector: "ba-homepage",
@@ -9,7 +10,7 @@ import { DatePipe } from "@angular/common";
 export class HomepageComponent implements OnInit {
 
     get currentDate(): string {
-        return this.datePipe.transform(new Date(), 'MM/dd/yyyy');
+        return this.datePipe.transform(new Date(), 'MMM d, y');
     }
 
     get remainingDays(): any {
@@ -27,8 +28,19 @@ export class HomepageComponent implements OnInit {
         }
     }
 
+    get remainingBudget(): string {
+        return `${this.currencyPipe.transform(this.dataService.userContext.remainingBudget)} remaining`;
+    }
+
+    get totalBudget(): string {
+        return `(${this.currencyPipe.transform(this.dataService.userContext.totalBudget)} originally)`;
+
+    }
+
     constructor(
-        private datePipe: DatePipe
+        private currencyPipe: CurrencyPipe,
+        private datePipe: DatePipe,
+        private dataService: DataService
     ) {}
 
     ngOnInit() {
