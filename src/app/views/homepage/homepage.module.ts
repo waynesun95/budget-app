@@ -1,6 +1,7 @@
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { HomepageComponent } from "./homepage.component";
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -8,6 +9,9 @@ import { HomepageComponent } from "./homepage.component";
     ],
     declarations: [
         HomepageComponent
+    ],
+    providers: [
+        DatePipe
     ],
     // exports: [
     //     HomepageComponent
