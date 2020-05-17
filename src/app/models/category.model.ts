@@ -4,3 +4,14 @@ export interface Category {
     totalBudget: number;
     remainingBudget: number;
 }
+
+export interface CategoryListItem {
+    categoryType: CategoryType;
+    categories: Category[];
+    listHeight?: number;
+}
+
+export enum CategoryType {
+    REQUIRED = 'Required Expenses',
+    OPTIONAL = 'Other Expenses'
+}

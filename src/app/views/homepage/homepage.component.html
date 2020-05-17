@@ -1,6 +1,45 @@
-<FlexboxLayout flexDirection="column">
-    <Label [text]="currentDate"></Label>
-    <Label [text]="remainingDays"></Label>
-    <Label alignSelf="center" [text]="remainingBudget"></Label>
-    <Label alignSelf="center" [text]="totalBudget"></Label>
-</FlexboxLayout>
+<GridLayout class="homepage-container" columns="*" rows="auto" alignItems="start">
+    <StackLayout class="category-list-section" row="0" col="0">
+        <!-- Buffer to place list in proper spot, needed for list header animations not to overlap top section of homepage-->
+        <StackLayout class="category-list-offset"></StackLayout>
+        <AbsoluteLayout class="category-list-container">
+            <RadListView [items]="categories" top="0" left="0" #categoryListView>
+                <ng-template tkListItemTemplate let-categoryListItem="item">
+                    <StackLayout width="100%">
+                        <Label class="category-header" [text]="categoryListItem.categoryType" backgroundColor="#534bae" [height]="categoryHeaderHeight"></Label>
+                        <ba-category-list-item *ngFor="let category of categoryListItem.categories"
+                                               [title]="category.name"
+                                               [remainingBudget]="category.remainingBudget"
+                                               [originalBudget]="category.totalBudget"
+                                               [divider]="true"
+                                               [height]="listItemHeight">
+                        </ba-category-list-item>
+                    </StackLayout>
+                </ng-template>
+            </RadListView>
+            <Label class="current-category-header"
+                   *ngIf="showStickyHeader"
+                   [text]="stickyHeaderText"
+                   [top]="currentCategoryHeaderPosition"
+                   left="0"
+                   backgroundColor="#534bae"
+                   [height]="categoryHeaderHeight"
+                   #currentCategoryHeader>
+            </Label>
+        </AbsoluteLayout>
+    </StackLayout>
+
+    <FlexboxLayout class="homepage-top-section" row="0" col="0" flexDirection="column" verticalAlignment="top">
+        <Label class="date-display" [text]="currentDate"></Label>
+        <Label class="days-remaining-display" [text]="remainingDays"></Label>
+        <FlexboxLayout class="budget-display-container"
+                       flexDirection="column"
+                       alignItems="center"
+                       alignSelf="center"
+                       justifyContent="center"
+                       flexGrow="1">
+            <Label class="remaining-budget-display" [text]="remainingBudget"></Label>
+            <Label class="total-budget-display" [text]="totalBudget"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+</GridLayout>
