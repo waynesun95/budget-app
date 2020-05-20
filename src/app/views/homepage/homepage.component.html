@@ -12,7 +12,8 @@
                                                [remainingBudget]="category.remainingBudget"
                                                [originalBudget]="category.totalBudget"
                                                [divider]="true"
-                                               [height]="listItemHeight">
+                                               [height]="listItemHeight"
+                                               (tap)="onCategorySelected(category)">
                         </ba-category-list-item>
                     </StackLayout>
                 </ng-template>

@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
     selector: "ba-category-list-item",
@@ -17,6 +17,8 @@ export class CategoryListItemComponent {
     @Input() divider: boolean;
 
     @Input() itemHeight: number = 60;
+
+    @Output() tap = new EventEmitter();
 
     constructor(private currencyPipe: CurrencyPipe) {}
 

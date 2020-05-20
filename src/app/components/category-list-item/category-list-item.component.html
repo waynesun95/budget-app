@@ -1,4 +1,8 @@
-<FlexboxLayout class="list-item-container" justifyContent="space-between" alignItems="center" [height]="itemHeight">
+<FlexboxLayout class="list-item-container"
+               [height]="itemHeight"
+               (tap)="tap.emit()"
+               justifyContent="space-between"
+               alignItems="center" >
     <Label class="category-title" [text]="title"></Label>
     <FlexboxLayout class="category-budget-container" flexDirection="column" justifyContent="center" alignItems="flex-end">
         <Label class="remaining-budget" [text]="currencyFormat(remainingBudget)"></Label>

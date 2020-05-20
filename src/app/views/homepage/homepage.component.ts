@@ -1,3 +1,4 @@
+import { Category } from '~/app/models/category.model';
 import { CategoryListItem, CategoryType } from './../../models/category.model';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit } from "@angular/core";
@@ -101,6 +102,15 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         this.stickyHeaderText = this.currentCategory.categoryType;
 
         this._categories = new ObservableArray(this.parsedCategories);
+    }
+
+    // TODO: route to category detail view
+    /**
+     * Invoked when a user taps on a category.
+     */
+    onCategorySelected(category: Category) {
+        console.log('tapped');
+        console.log(category);
     }
 
     /**
