@@ -113,6 +113,15 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         console.log(category);
     }
 
+    // TODO: route to add expense screen.
+    // Might have to move function out of component depending on where button gets placed
+    /**
+     * Invoked when a user taps the add new expense button
+     */
+    addNewExpense() {
+        console.log('add new expense button tapped');
+    }
+
     /**
      * Listens to the RadListView's scroll event. Calculates the position and text in the sticky scroll header
      */

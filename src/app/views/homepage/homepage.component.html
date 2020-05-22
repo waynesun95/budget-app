@@ -6,7 +6,12 @@
             <RadListView [items]="categories" top="0" left="0" #categoryListView>
                 <ng-template tkListItemTemplate let-categoryListItem="item">
                     <StackLayout width="100%">
-                        <Label class="category-header" [text]="categoryListItem.categoryType" backgroundColor="#534bae" [height]="categoryHeaderHeight"></Label>
+                        <Label class="category-header"
+                               [text]="categoryListItem.categoryType"
+                               backgroundColor="#534bae"
+                               fontWeight="bold"
+                               [height]="categoryHeaderHeight">
+                        </Label>
                         <ba-category-list-item *ngFor="let category of categoryListItem.categories"
                                                [title]="category.name"
                                                [remainingBudget]="category.remainingBudget"
@@ -30,9 +35,19 @@
         </AbsoluteLayout>
     </StackLayout>
 
-    <FlexboxLayout class="homepage-top-section" row="0" col="0" flexDirection="column" verticalAlignment="top">
-        <Label class="date-display" [text]="currentDate"></Label>
-        <Label class="days-remaining-display" [text]="remainingDays"></Label>
+    <FlexboxLayout class="homepage-top-section"
+                   row="0"
+                   col="0"
+                   flexDirection="column"
+                   verticalAlignment="top">
+        <FlexboxLayout justifyContent="space-between" alignItems="center">
+            <FlexboxLayout flexDirection="column">
+                <Label class="date-display" [text]="currentDate"></Label>
+                <Label class="days-remaining-display" [text]="remainingDays"></Label>
+            </FlexboxLayout>
+            <!--TODO: Get rid of this button and place at bottom.. likely out of this component (remove the two flexboxes here)-->
+            <Button class="add-expense-button -outline" text="+" (tap)="addNewExpense()"></Button>
+        </FlexboxLayout>
         <FlexboxLayout class="budget-display-container"
                        flexDirection="column"
                        alignItems="center"
