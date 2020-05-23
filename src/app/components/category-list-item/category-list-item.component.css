@@ -1,0 +1,23 @@
+:host {
+    width: 100%;
+}
+
+.list-item-container {
+    color: #ffffff;
+    /* background-color: #1a237e; */
+}
+
+.category-title {
+    font-size: 20;
+    font-weight: bold;
+}
+
+.remaining-budget {
+    padding-bottom: 0;
+    font-size: 20;
+    font-weight: bold;
+}
+
+.original-budget {
+    font-size: 10;
+}
