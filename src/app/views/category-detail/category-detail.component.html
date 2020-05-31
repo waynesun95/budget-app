@@ -1,4 +1,6 @@
-<ActionBar title="Category Name">
+<ActionBar [title]="categoryName">
+    <NavigationButton text="Budget"></NavigationButton>
+    <ActionItem ios.position="right" ios.systemIcon="12"></ActionItem>
 </ActionBar>
 <AbsoluteLayout class="category-detail-content-container">
     <RadListView [items]="expenses"

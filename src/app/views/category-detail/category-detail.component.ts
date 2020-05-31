@@ -26,6 +26,9 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
     showStickyHeader: boolean = true;
     stickyHeaderText: string = '';
 
+    // TODO: Get this from route
+    categoryName = 'Category Name';
+
     parsedExpenses: ExpenseListItem[];
     private _expenses: ObservableArray<ExpenseListItem>;
     get expenses(): ObservableArray<ExpenseListItem> {
