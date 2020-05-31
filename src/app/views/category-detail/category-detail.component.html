@@ -1,1 +1,35 @@
-<ba-expense-list-item></ba-expense-list-item>
+<ActionBar title="Category Name">
+</ActionBar>
+<AbsoluteLayout class="category-detail-content-container">
+    <RadListView [items]="expenses"
+                 top="0"
+                 left="0"
+                 #expenseListView>
+        <ng-template tkListItemTemplate let-expenseListItem="item">
+            <StackLayout width="100%">
+                <Label class="expense-date-header"
+                       [text]="expenseListItem.date"
+                       backgroundColor="#534bae"
+                       fontWeight="bold"
+                       [height]="expenseDateHeaderHeight">
+                </Label>
+                <ba-expense-list-item *ngFor="let expense of expenseListItem.expenses"
+                                      [title]="expense.title"
+                                      [amount]="expense.amount"
+                                      [notes]="expense.notes && expense.notes.trim() !== ''"
+                                      [height]="listItemHeight">
+                </ba-expense-list-item>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+    <Label class="current-expense-date-header"
+           *ngIf="showStickyHeader"
+           [text]="stickyHeaderText"
+           [top]="currentExpenseDateHeaderPosition"
+           left="0"
+           backgroundColor="#534bae"
+           [height]="expenseDateHeaderHeight"
+           #currentExpenseDateHeader>
+    </Label>
+</AbsoluteLayout>
+

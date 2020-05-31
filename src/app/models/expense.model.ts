@@ -7,3 +7,9 @@ export interface Expense {
     paymentType: string;    // TODO: figure out dynamic typing
     notes: string;
 }
+
+export interface ExpenseListItem {
+    date: string;
+    expenses: Expense[];
+    listHeight?: number;
+}

@@ -1,0 +1,31 @@
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+.category-detail-content-container {
+    height: 100%;
+    background-color: #000051;
+    color: #ffffff;
+}
+
+.expense-list-container {
+    height: 100%;
+    background-color: #000051;
+    color: #ffffff;
+}
+
+.expense-date-header {
+    color: white;
+}
+
+.current-expense-date-header {
+    width: 100%;
+    padding: 5;
+    font-weight: bold;
+}
+
+RadListView {
+    height: 100%;
+    width: 100%;
+}
