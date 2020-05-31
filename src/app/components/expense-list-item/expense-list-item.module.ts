@@ -10,6 +10,9 @@ import { ExpenseListItemComponent } from './expense-list-item.component';
     declarations: [
         ExpenseListItemComponent
     ],
+    providers: [
+        CurrencyPipe
+    ],
     exports: [
         ExpenseListItemComponent
     ],

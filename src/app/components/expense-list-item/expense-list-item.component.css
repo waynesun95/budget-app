@@ -1,3 +1,13 @@
 /* :host {
     width: 100%;
 } */
+
+.expense-title {
+    width: 50%;
+    font-size: 12;
+    text-overflow: ellipsis;
+}
+
+.expense-amount {
+    font-size: 20;
+}
