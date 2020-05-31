@@ -1,7 +1,8 @@
 <FlexboxLayout class="expense-item-container"
                [height]="height"
                justifyContent="space-between"
-               alignItems="center">
+               alignItems="center"
+               (tap)="tap.emit()">
     <Label *ngIf="notes" class="expense-title far" [text]="title + ' ' + noteIconUnicode" textWrap="true"></Label>
     <Label *ngIf="!notes" class="expense-title far" [text]="title" textWrap="true"></Label>
     <Label class="expense-amount" [text]="amount"></Label>

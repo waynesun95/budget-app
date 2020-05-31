@@ -93,6 +93,15 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
         }
     }
 
+    /**
+     * Invoked when an expense in the expense list is tapped
+     * @param expense the expense that was tapped
+     */
+    onExpenseSelected(expense: Expense) {
+        console.log('Expense selected');
+        console.log(expense);
+    }
+
     // TODO: consolidate into a util function
     /**
      * Listens to the RadListView's scroll event. Calculates the position and text in the sticky scroll header

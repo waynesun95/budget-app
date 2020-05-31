@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: "ba-expense-list-item",
@@ -25,6 +25,8 @@ export class ExpenseListItemComponent {
 
     @Input() height: number;
     @Input() divider = true;
+
+    @Output() tap = new EventEmitter();
 
     constructor(private currencyPipe: CurrencyPipe) {}
 }
