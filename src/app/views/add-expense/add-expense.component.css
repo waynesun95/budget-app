@@ -2,3 +2,36 @@
     width: 100%;
     height: 100%;
 }
+
+.new-expense-container {
+    padding-top: 15;
+    background-color: #000051;
+}
+
+.budget-display {
+    height: 30%;
+    color: white;
+}
+
+RadDataForm {
+    height: 100%;
+    background-color: #000051;
+}
+
+DataFormEditorCore {
+}
+
+PropertyEditor {
+    background-color: #534bae;
+    color: white;
+}
+
+EntityProperty[name="amount"] PropertyEditor,
+EntityProperty[name="category"] PropertyEditor {
+    margin-bottom: 30;
+}
+
+
+EntityProperty {
+    color: red;
+}

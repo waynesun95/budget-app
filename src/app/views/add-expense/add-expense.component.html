@@ -1,1 +1,113 @@
-<Label text="add expense page"></Label>
+<ActionBar title="New Expense">
+    <!-- <NavigationButton text="Budget"></NavigationButton> -->
+    <ActionItem ios.position="left" ios.systemIcon="1"></ActionItem>
+    <ActionItem ios.position="right" ios.systemIcon="3" (tap)="onSubmit()"></ActionItem>
+</ActionBar>
+<FlexboxLayout class="new-expense-container" flexDirection="column">
+    <!--TODO: Add budget display? BA-3-->
+    <!-- <GridLayout class="budget-display" columns="*, *" rows="*, *">
+        <StackLayout row="0" col="0">
+            <Label text="Total budget"></Label>
+        </StackLayout>
+        <StackLayout row="1" col="0">
+            <Label text="After expense"></Label>
+        </StackLayout>
+        <StackLayout row="0" col="1">
+            <Label text="Category budget"></Label>
+        </StackLayout>
+        <StackLayout row="1" col="1">
+            <Label text="After expense"></Label>
+        </StackLayout>
+    </GridLayout> -->
+    <RadDataForm [source]="newExpense" commitMode="Manual" (editorUpdate)="styleForm($event)" #newExpenseForm>
+
+        <!-- *************** TITLE FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.TITLE"
+                        displayName="Title"
+                        hintText="Title"
+                        index="0"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="Text">
+                <!-- <TKPropertyEditorStyle tkPropertyEditorStyle labelHidden="true" labelWidth="0"></TKPropertyEditorStyle> -->
+            </TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please enter an expense title"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** AMOUNT FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.AMOUNT"
+                        displayName="Expense Amount"
+                        hintText="0.00"
+                        index="1"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="Decimal" hintText="0.00">
+                <TKPropertyEditorStyle tkPropertyEditorStyle separatorColor="Transparent"></TKPropertyEditorStyle>
+            </TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please enter the expense amount"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** DATE FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.DATE"
+                        displayName="Expense Date"
+                        index="2"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please select an expense date"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** TIME FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.TIME"
+                        displayName="Expense Time"
+                        index="3"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please select an expense time"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** PAYMENT TYPE FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.PAYMENT_TYPE"
+                        displayName="Payment Type"
+                        [valuesProvider]="paymentTypes"
+                        index="4"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please select a payment type"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** CATEGORY FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.CATEGORY"
+                        displayName="Expense Category"
+                        [valuesProvider]="expenseCategories"
+                        index="5"
+                        required="true">
+            <TKPropertyEditor tkEntityPropertyEditor type="Picker">
+                <TKPropertyEditorStyle tkPropertyEditorStyle separatorColor="Transparent"></TKPropertyEditorStyle>
+            </TKPropertyEditor>
+            <!-- <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Please select an expense category"></TKNonEmptyValidator> -->
+        </TKEntityProperty>
+
+        <!-- *************** NOTES FIELD *************** -->
+        <TKEntityProperty tkDataFormProperty
+                        [name]="NewExpenseFormField.NOTES"
+                        displayName="Notes"
+                        hintText="Notes"
+                        index="6">
+            <TKPropertyEditor tkEntityPropertyEditor type="MultilineText">
+                <TKPropertyEditorStyle tkPropertyEditorStyle
+                                    labelPosition="Top"
+                                    labelWidth="0"
+                                    separatorColor="Transparent"
+                                    editorVerticalOffset="70">
+                </TKPropertyEditorStyle>
+            </TKPropertyEditor>
+        </TKEntityProperty>
+    </RadDataForm>
+
+<!-- <Button text="Add Expense" (tap)="onSubmit()"></Button> -->
+
+</FlexboxLayout>
