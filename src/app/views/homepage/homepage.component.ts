@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit } from 
 import { DatePipe, CurrencyPipe } from "@angular/common";
 import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
 import { RadListView, ListViewScrollEventData } from 'nativescript-ui-listview';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
     selector: "ba-homepage",
@@ -64,7 +65,8 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         private currencyPipe: CurrencyPipe,
         private datePipe: DatePipe,
         public dataService: DataService,
-        private zone: NgZone
+        private zone: NgZone,
+        private routerExtensions: RouterExtensions
     ) {}
 
     ngOnInit() {
@@ -104,13 +106,11 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         this._categories = new ObservableArray(this.parsedCategories);
     }
 
-    // TODO: route to category detail view
     /**
      * Invoked when a user taps on a category.
      */
     onCategorySelected(category: Category) {
-        console.log('tapped');
-        console.log(category);
+        this.routerExtensions.navigate(['/category-detail', category.name]);
     }
 
     // TODO: route to add expense screen.

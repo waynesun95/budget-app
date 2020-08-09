@@ -2,7 +2,10 @@
     <NavigationButton text="Budget"></NavigationButton>
     <ActionItem ios.position="right" ios.systemIcon="12"></ActionItem>
 </ActionBar>
-<AbsoluteLayout class="category-detail-content-container">
+<FlexboxLayout *ngIf="noExpenses" class="category-detail-content-container" justifyContent="center" alignItems="center">
+    <Label text="No recorded expenses for this month"></Label>
+</FlexboxLayout>
+<AbsoluteLayout *ngIf="!noExpenses" class="category-detail-content-container">
     <RadListView [items]="expenses"
                  top="0"
                  left="0"

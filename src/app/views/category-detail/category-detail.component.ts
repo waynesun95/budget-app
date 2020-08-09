@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit } from 
 import { Expense } from '~/app/models/expense.model';
 import { RadListView, ListViewScrollEventData } from 'nativescript-ui-listview';
 import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: "ba-category-detail",
@@ -26,8 +27,8 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
     showStickyHeader: boolean = true;
     stickyHeaderText: string = '';
 
-    // TODO: Get this from route
     categoryName = 'Category Name';
+    noExpenses = false;
 
     parsedExpenses: ExpenseListItem[];
     private _expenses: ObservableArray<ExpenseListItem>;
@@ -35,21 +36,33 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
         return this._expenses;
     }
 
-    constructor(private dataService: DataService, private zone: NgZone) {}
+    constructor(
+        private dataService: DataService,
+        private zone: NgZone,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
+        // TODO: Add loading spinner!
+        this.categoryName = (this.activatedRoute.params as any)._value.category;
         this.intializeExpenses();
     }
 
     ngAfterViewInit() {
-        this.listViewScrollListener();
+        if (!this.noExpenses) {
+            this.listViewScrollListener();
+        }
     }
 
     /**
      * Initializes expenses for RadListView
      */
     intializeExpenses() {
-        const expenses = this.dataService.expenses;
+        const expenses = this.dataService.expenses.filter((expense: Expense) => expense.category === this.categoryName);
+        if (expenses.length === 0) {
+            this.noExpenses = true;
+            return;
+        }
         const expensesObj = {};
         for (const expense of expenses) {
             const expenseDate = expense.date;
