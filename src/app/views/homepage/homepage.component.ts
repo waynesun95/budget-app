@@ -119,7 +119,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
      * Invoked when a user taps the add new expense button
      */
     addNewExpense() {
-        console.log('add new expense button tapped');
+        this.routerExtensions.navigate(['/add-expense']);
     }
 
     // TODO: consolidate into a util function
