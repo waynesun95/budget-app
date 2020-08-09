@@ -14,6 +14,9 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
     declarations: [
         CategoryDetailComponent
     ],
+    exports: [
+        CategoryDetailComponent
+    ],
     providers: [
         DataService
     ],

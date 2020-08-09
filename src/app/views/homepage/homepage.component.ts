@@ -122,6 +122,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         console.log('add new expense button tapped');
     }
 
+    // TODO: consolidate into a util function
     /**
      * Listens to the RadListView's scroll event. Calculates the position and text in the sticky scroll header
      */

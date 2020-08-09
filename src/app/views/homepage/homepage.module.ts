@@ -15,14 +15,14 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
     declarations: [
         HomepageComponent
     ],
+    exports: [
+        HomepageComponent
+    ],
     providers: [
         CurrencyPipe,
         DatePipe,
         DataService
     ],
-    // exports: [
-    //     HomepageComponent
-    // ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

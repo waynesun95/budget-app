@@ -13,6 +13,9 @@ import { DatePipe } from '@angular/common';
     declarations: [
         AddExpenseComponent
     ],
+    exports: [
+        AddExpenseComponent
+    ],
     providers: [
         DataService,
         DatePipe
