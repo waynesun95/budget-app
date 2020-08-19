@@ -10,11 +10,14 @@ const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomepageComponent},
     {path: 'category-detail/:category', component: CategoryDetailComponent},
-    {path: 'add-expense', component: AddExpenseComponent}
+    {path: 'add-expense', component: AddExpenseComponent},
+    {path: 'initialize-budget', loadChildren: () => import('./workflows/initialize-budget/initialize-budget-workflow.module').then(m => m.InitializeBudgetWorkflowModule)}
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
+    imports: [
+        NativeScriptRouterModule.forRoot(routes)
+    ],
     exports: [NativeScriptRouterModule]
 })
 export class AppRoutingModule { }
