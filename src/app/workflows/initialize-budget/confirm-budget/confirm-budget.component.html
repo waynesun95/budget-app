@@ -1,0 +1,49 @@
+<FlexboxLayout class="confirm-budget-container"
+               flexDirection="column"
+               justifyContent="space-between"
+               alignItems="center">
+    <Label class="confirm-budget-title" [text]="currentDateText"></Label>
+    <FlexboxLayout class="confirm-budget-content-container"
+                   flexDirection="column"
+                   alignItems="center"
+                   justifyContent="center">
+
+        <!-- Last month net budget switcher -->
+        <FlexboxLayout class="toggle-last-month-net"
+                       justifyContent="space-between"
+                       alignItems="center">
+            <Label text="Use last month's net remaining budget"></Label>
+            <Switch checked="true"
+                    (checkedChange)="useLastMonthNet($event)"
+                    backgroundColor="#534bae">
+            </Switch>
+        </FlexboxLayout>
+
+        <!-- Budget details -->
+        <FlexboxLayout class="budget-detail"
+                       *ngFor="let detail of budgetDetails; let i = index;"
+                       justifyContent="space-between"
+                       alignItems="center"
+                       [ngClass]="detail.disabled ? 'budget-detail-disabled' : ''">
+            <Label [text]="detail.label" textWrap="true"></Label>
+            <Label [text]="getValueDisplay(detail.value)"
+                   [ngClass]="{
+                       'negative': i === 1 && !detail.disabled && detail.value < 0,
+                       'positive': i === 1 && !detail.disabled && detail.value >= 0
+                    }">
+            </Label>
+        </FlexboxLayout>
+
+        <!-- Total budget -->
+        <FlexboxLayout class="budget-total"
+                       justifyContent="space-between"
+                       alignItems="center">
+            <Label text="Total:"></Label>
+            <Label [text]="getTotalBudget()"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+    <FlexboxLayout class="action-buttons" justifyContent="space-around">
+        <Button class="back-button" text="Back" (tap)="onBack()"></Button>
+        <Button class="submit-button" text="Confirm" (tap)="onSubmit()"></Button>
+    </FlexboxLayout>
+</FlexboxLayout>

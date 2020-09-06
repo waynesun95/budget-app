@@ -7,7 +7,7 @@ import { NSEmptyOutletComponent } from "nativescript-angular";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: '', redirectTo: '/initialize-budget', pathMatch: 'full'},
     {path: 'home', component: HomepageComponent},
     {path: 'category-detail/:category', component: CategoryDetailComponent},
     {path: 'add-expense', component: AddExpenseComponent},

@@ -5,7 +5,11 @@
     <Label class="set-budget-title" [text]="currentDateText"></Label>
     <FlexboxLayout class="set-budget-content-container" flexDirection="column" alignItems="center" justifyContent="center">
         <Label class="disposable-income-input-label" text="Expected Disposable Income" textWrap="true"></Label>
-        <RadDataForm [source]="disposableIncome" commitMode="Manual" (editorUpdate)="styleForm($event)" #disposableIncomeForm>
+        <RadDataForm [source]="disposableIncome"
+                     commitMode="Manual"
+                     (editorUpdate)="styleForm($event)"
+                     (loaded)="onDataFormLoaded($event)"
+                     #disposableIncomeForm>
             <TKEntityProperty tkDataFormProperty
                               [name]="DisposableIncomeFormField.DISPOSABLE_INCOME"
                               displayName=""
@@ -17,5 +21,5 @@
             </TKEntityProperty>
         </RadDataForm>
     </FlexboxLayout>
-    <Button class="submit-button" text="Confirm" (tap)="onSubmit()"></Button>
+    <Button class="submit-button" text="Continue" (tap)="onSubmit()"></Button>
 </FlexboxLayout>

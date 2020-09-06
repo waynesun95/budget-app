@@ -1,0 +1,44 @@
+.confirm-budget-container {
+    width: 100%;
+    height: 100%;
+    padding: 50 10;
+    color: white;
+    background-color: #000051;
+}
+
+.confirm-budget-title {
+    font-size: 20;
+}
+
+.toggle-last-month-net {
+    width: 100%;
+    margin-bottom: 20;
+}
+
+.budget-detail {
+    width: 100%;
+    margin-top: 5;
+}
+
+.budget-detail-disabled {
+    color: gray;
+}
+
+.budget-total {
+    width: 100%;
+    margin-top: 30;
+    font-size: 30;
+    font-weight: bold;
+}
+
+.action-buttons {
+    width: 80%;
+}
+
+.negative {
+    color: red;
+}
+
+.positive {
+    color: green;
+}
