@@ -1,0 +1,9 @@
+<FlexboxLayout class="chip"
+               justifyContent="space-between"
+               alignItems="center"
+               [marginRight]="marginRight"
+               [marginTop]="marginTop"
+               [marginBottom]="marginBottom">
+    <Label [text]="text"></Label>
+    <Button class="add-expense-button -outline" text="x" (tap)="close.emit(data)"></Button>
+</FlexboxLayout>
