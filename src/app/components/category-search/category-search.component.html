@@ -1,0 +1,68 @@
+<FlexboxLayout class="container" flexDirection="column" justifyContent="space-between" alignItems="center">
+    <FlexboxLayout class="category-search-container" flexDirection="column" alignItems="center">
+
+        <!-- Header -->
+        <Label class="header"
+               [text]="header"
+               textWrap="true">
+        </Label>
+        <Label class="informational-header"
+               [text]="informationalHeader"
+               textWrap="true">
+        </Label>
+
+        <!-- Selected Category Chips -->
+        <FlexboxLayout class="selected-categories-container" flexDirection="column">
+            <Label class="selected-categories-header" text="Selected Categories"></Label>
+            <FlexboxLayout class="chip-container" flexWrap="wrap">
+                <Label *ngIf="!hasSelectedCategories()"
+                       class="no-selected-categories-message"
+                       text="No selected categories. Add categories using the search bar below"
+                       textWrap="true"
+                       fontWeight="bold">
+                </Label>
+                <ng-container *ngIf="hasSelectedCategories()">
+                    <ng-container *ngFor="let category of categorySelectionItems">
+                        <ba-chip class="selected-category-chip"
+                                 *ngIf="category.selected"
+                                 [text]="category.name"
+                                 (close)="unselectCategory(category)">
+                        </ba-chip>
+                    </ng-container>
+                </ng-container>
+            </FlexboxLayout>
+        </FlexboxLayout>
+
+        <!-- Autocomplete component -->
+        <FlexboxLayout class="category-autocomplete-container" flexDirection="column" alignItems="center">
+            <FlexboxLayout class="category-input-container" justifyContent="space-between" alignItems="center">
+                <TextField class="category-input"
+                           hint="Enter Category"
+                           secure="false"
+                           returnKeyType="go"
+                           [(ngModel)]="categoryInputValue"
+                           (ngModelChange)="inputChanged = !!$event"
+                           [formControl]="searchControl"
+                           (returnPress)="onReturnPress($event)"
+                           backgroundColor="transparent">
+                </TextField>
+                <Button class="clear-input-button -outline" text="x" (tap)="clearText()"></Button>
+            </FlexboxLayout>
+            <StackLayout *ngIf="noResults && !noInput && waitForFirstDebounce" class="no-results-display">
+                <Label class="no-results-label" text="No results. Hit Go to add category"></Label>
+            </StackLayout>
+            <ListView *ngIf="!noResults && !noInput && waitForFirstDebounce"
+                      class="category-list-group"
+                      [items]="resultsList"
+                      (itemTap)="onItemTap($event)"
+                      separatorColor="white">
+                <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+                    <Label class="category-list-group-item" [text]="item.name"></Label>
+                </ng-template>
+            </ListView>
+        </FlexboxLayout>
+
+      </FlexboxLayout>
+      <button text="Confirm" (tap)="confirmCategorySelections()"></button>
+</FlexboxLayout>
+
