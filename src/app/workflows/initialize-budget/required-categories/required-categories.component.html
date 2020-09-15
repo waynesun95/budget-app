@@ -1,0 +1,7 @@
+<FlexboxLayout class="required-categories-container">
+    <ba-category-search [categorySelectionItems]="requiredCategories"
+                        [header]="header"
+                        [informationalHeader]="informationalHeader"
+                        (selectedCategories)="handleCategorySelection($event)">
+    </ba-category-search>
+</FlexboxLayout>
