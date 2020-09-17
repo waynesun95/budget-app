@@ -1,3 +1,6 @@
+import { OptionalCategoriesWorkflowComponent } from './optional-categories/optional-categories.component';
+import { CategorySearchModule } from './../../components/category-search/category-search.module';
+import { RequiredCatgoriesWorkflowComponent } from './required-categories/required-categories.component';
 import { CurrencyPipe } from '@angular/common';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { InitializeBudgetWorkflowService } from './intialize-budget-workflow.service';
@@ -11,11 +14,14 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
     imports: [
         NativeScriptCommonModule,
         InitializeBudgetWorkflowRoutingModule,
-        NativeScriptUIDataFormModule
+        NativeScriptUIDataFormModule,
+        CategorySearchModule
     ],
     declarations: [
         SetBudgetWorkflowComponent,
-        ConfirmBudgetWorkflowComponent
+        ConfirmBudgetWorkflowComponent,
+        RequiredCatgoriesWorkflowComponent,
+        OptionalCategoriesWorkflowComponent
     ],
     providers: [
         InitializeBudgetWorkflowService,
