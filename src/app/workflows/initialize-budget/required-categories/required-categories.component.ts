@@ -1,6 +1,8 @@
+import { RouterExtensions } from 'nativescript-angular/router';
 import { Component, OnInit } from "@angular/core";
 import { CategorySelectionItem } from "../../../models/category-selection-item.model";
 import { MOCK_CATEGORIES } from "../../../mocks/category.mock.data";
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
     selector: "required-categories-workflow",
@@ -13,6 +15,10 @@ export class RequiredCatgoriesWorkflowComponent implements OnInit {
     header: string = 'Set required spending categories';
     informationalHeader: string = `These are categories of spending that you cannot avoid throughout the month (Food, rent, etc.)`;
 
+    constructor(private page: Page, private routerExtensions: RouterExtensions) {
+        this.page.actionBarHidden = true;
+    }
+
     ngOnInit() {
         // TODO: get this from service
         this.requiredCategories = MOCK_CATEGORIES
@@ -23,5 +29,6 @@ export class RequiredCatgoriesWorkflowComponent implements OnInit {
 
     handleCategorySelection(categories: CategorySelectionItem[]) {
         categories.forEach(category => console.log(category.name));
+        this.routerExtensions.navigate(['initialize-budget/optional-categories']);
     }
 }

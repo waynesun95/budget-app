@@ -81,7 +81,10 @@ export class ConfirmBudgetWorkflowComponent implements OnInit {
         };
 
         confirm(options).then((result: boolean) => {
-            console.log(result);
+            // TODO: Save data
+            if (result) {
+                this.routerExtensions.navigate(['initialize-budget/required-categories']);
+            }
         });
     }
 }

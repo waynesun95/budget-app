@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CategorySelectionItem } from "../../../models/category-selection-item.model";
 import { MOCK_CATEGORIES } from "../../../mocks/category.mock.data";
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
     selector: "optional-categories-workflow",
@@ -12,6 +13,10 @@ export class OptionalCategoriesWorkflowComponent implements OnInit {
     requiredCategories: CategorySelectionItem[];
     header: string = 'Set optional spending categories';
     informationalHeader: string = `These are categories of spending that are optional throughout the month (Fun, Brokerage, etc.)`;
+
+    constructor(private page: Page) {
+        this.page.actionBarHidden = true;
+    }
 
     ngOnInit() {
         // TODO: get this from service
