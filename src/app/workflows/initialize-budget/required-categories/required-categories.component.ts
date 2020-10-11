@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { CategorySelectionItem } from "../../../models/category-selection-item.model";
 import { MOCK_CATEGORIES } from "../../../mocks/category.mock.data";
 import { Page } from "tns-core-modules/ui/page";
+import { InitializeBudgetWorkflowService } from '../intialize-budget-workflow.service';
 
 @Component({
     selector: "required-categories-workflow",
@@ -15,7 +16,11 @@ export class RequiredCatgoriesWorkflowComponent implements OnInit {
     header: string = 'Set required spending categories';
     informationalHeader: string = `These are categories of spending that you cannot avoid throughout the month (Food, rent, etc.)`;
 
-    constructor(private page: Page, private routerExtensions: RouterExtensions) {
+    constructor(
+        private page: Page,
+        private routerExtensions: RouterExtensions,
+        private initializeBudgetWorkflowService: InitializeBudgetWorkflowService
+    ) {
         this.page.actionBarHidden = true;
     }
 
@@ -29,6 +34,9 @@ export class RequiredCatgoriesWorkflowComponent implements OnInit {
 
     handleCategorySelection(categories: CategorySelectionItem[]) {
         categories.forEach(category => console.log(category.name));
+        this.initializeBudgetWorkflowService.requiredCategories = categories.map(category =>
+            this.initializeBudgetWorkflowService.parseCategoryFromSelection(category, true)
+        );;
         this.routerExtensions.navigate(['initialize-budget/optional-categories']);
     }
 }

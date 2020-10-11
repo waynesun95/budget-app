@@ -1,0 +1,48 @@
+<!-- <TextField text="titty"></TextField>> -->
+<FlexboxLayout class="assign-budget-container"
+               flexDirection="column"
+               justifyContent="space-between"
+               alignItems="center">
+    <Label class="assign-budget-title" [text]="header"></Label>
+
+    <!-- REQUIRED CATEGORIES -->
+    <FlexboxLayout class="assign-budget-content-container" flexDirection="column" alignItems="center" justifyContent="center">
+        <Label class="disposable-income-input-label" text="Expected Disposable Income" textWrap="true"></Label>
+        <RadDataForm [source]="requiredCategories"
+                     commitMode="Manual"
+                     (editorUpdate)="styleForm($event)"
+                     #requiredCategoriesForm>
+            <TKEntityProperty *ngFor="let categoryName of requiredCategoryNames; let i = index"
+                              tkDataFormProperty
+                              [name]="getCategoryField(true, i)"
+                              [displayName]="categoryName"
+                              [index]="i"
+                              required="true">
+                <TKPropertyEditor tkEntityPropertyEditor type="Decimal">
+                    <TKPropertyEditorStyle tkPropertyEditorStyle separatorColor="Transparent"></TKPropertyEditorStyle>
+                </TKPropertyEditor>
+            </TKEntityProperty>
+        </RadDataForm>
+    </FlexboxLayout>
+
+    <!-- OPTIONAL CATEGORIES-->
+    <FlexboxLayout class="assign-budget-content-container" flexDirection="column" alignItems="center" justifyContent="center">
+        <Label class="disposable-income-input-label" text="Expected Disposable Income" textWrap="true"></Label>
+        <RadDataForm [source]="optionalCategories"
+                     commitMode="Manual"
+                     (editorUpdate)="styleForm($event)"
+                     #optionalCategoriesForm>
+            <TKEntityProperty *ngFor="let categoryName of optionalCategoryNames; let i = index"
+                              tkDataFormProperty
+                              [name]="getCategoryField(false, i)"
+                              [displayName]="categoryName"
+                              [index]="i"
+                              required="true">
+                <TKPropertyEditor tkEntityPropertyEditor type="Decimal">
+                    <TKPropertyEditorStyle tkPropertyEditorStyle separatorColor="Transparent"></TKPropertyEditorStyle>
+                </TKPropertyEditor>
+            </TKEntityProperty>
+        </RadDataForm>
+    </FlexboxLayout>
+    <Button class="submit-button" text="Continue" (tap)="onSubmit()"></Button>
+</FlexboxLayout>

@@ -9,6 +9,7 @@ import { InitializeBudgetWorkflowRoutingModule } from './initialize-budget-workf
 import { SetBudgetWorkflowComponent } from './set-budget/set-budget.component';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
+import { AssignBudgetWorkflowComponent } from './assign-budget/assign-budget.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
         SetBudgetWorkflowComponent,
         ConfirmBudgetWorkflowComponent,
         RequiredCatgoriesWorkflowComponent,
-        OptionalCategoriesWorkflowComponent
+        OptionalCategoriesWorkflowComponent,
+        AssignBudgetWorkflowComponent
     ],
     providers: [
         InitializeBudgetWorkflowService,
